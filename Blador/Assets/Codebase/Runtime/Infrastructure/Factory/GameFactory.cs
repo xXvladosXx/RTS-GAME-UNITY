@@ -24,6 +24,6 @@ namespace Codebase.Runtime.Infrastructure.Factory
             _coroutineRunner = coroutineRunner;
         }
 
-       
+        
     }
 }

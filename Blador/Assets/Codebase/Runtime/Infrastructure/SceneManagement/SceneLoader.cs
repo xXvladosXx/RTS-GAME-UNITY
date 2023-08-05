@@ -13,12 +13,12 @@ namespace Codebase.Runtime.Infrastructure.SceneManagement
         {
             if (name == GetCurrentScene)
             {
-                await Addressables.LoadSceneAsync("Boot");
+                await SceneManager.LoadSceneAsync("Main");
             }   
             
             await UniTask.Delay(300);
             
-            await Addressables.LoadSceneAsync(name);
+//            await Addressables.LoadSceneAsync(name);
             
             onLoaded?.Invoke();
         }

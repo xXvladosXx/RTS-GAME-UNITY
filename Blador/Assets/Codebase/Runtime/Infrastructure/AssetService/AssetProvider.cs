@@ -15,7 +15,7 @@ namespace Codebase.Runtime.Infrastructure.AssetService
 
         public void Initialize()
         {
-            Addressables.InitializeAsync();
+//            Addressables.InitializeAsync();
         }
         
         public T GetAsset<T>(string path) where T : Object

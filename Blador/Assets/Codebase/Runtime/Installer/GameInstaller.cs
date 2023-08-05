@@ -4,6 +4,7 @@ using Codebase.Runtime.Infrastructure.Factory;
 using Codebase.Runtime.Infrastructure.SceneManagement;
 using Codebase.Runtime.Infrastructure.StateMachine;
 using Codebase.Runtime.Infrastructure.StaticData;
+using Codebase.Runtime.InputSystem;
 using UnityEngine;
 using Zenject;
 
@@ -37,7 +38,7 @@ namespace Codebase.Runtime.Installer
                 .FromComponentInNewPrefab(_coroutineRunner)
                 .AsSingle();
 
-            //Container.Bind<IInputProvider>().To<InputProvider>().AsSingle();
+            Container.Bind<IInputProvider>().To<InputProvider>().AsSingle();
             Container.Bind<IGameFactory>().To<GameFactory>().AsSingle();
         }
 

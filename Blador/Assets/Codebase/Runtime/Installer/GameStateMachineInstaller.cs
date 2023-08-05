@@ -16,7 +16,7 @@ namespace Codebase.Runtime.Installer
             Container.BindFactory<IGameStateMachine, GamePausedState, GamePausedState.Factory>();
             Container.BindFactory<IGameStateMachine, GameOverState, GameOverState.Factory>();
             
-            Container.Bind<IGameStateMachine>().To<GameStateMachine>().AsSingle();
+            Container.Bind<IGameStateMachine>().To<GameStateMachine>().AsSingle().NonLazy();
         }
     }
 }
