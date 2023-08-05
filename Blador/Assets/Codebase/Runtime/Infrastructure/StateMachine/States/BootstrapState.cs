@@ -21,8 +21,7 @@ namespace Codebase.Runtime.Infrastructure.StateMachine.States
 
         public void Enter()
         {
-            if(_sceneLoader.GetCurrentScene != "StartScene")
-                _sceneLoader.Load("StartScene");
+            _gameStateMachine.Enter<LoadLevelState, string>("Main");
         }
         
         public class Factory : PlaceholderFactory<IGameStateMachine, BootstrapState>

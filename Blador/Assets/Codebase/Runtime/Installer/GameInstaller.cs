@@ -5,6 +5,7 @@ using Codebase.Runtime.Infrastructure.SceneManagement;
 using Codebase.Runtime.Infrastructure.StateMachine;
 using Codebase.Runtime.Infrastructure.StaticData;
 using Codebase.Runtime.InputSystem;
+using Codebase.Runtime.PoolSystem;
 using UnityEngine;
 using Zenject;
 
@@ -40,6 +41,7 @@ namespace Codebase.Runtime.Installer
 
             Container.Bind<IInputProvider>().To<InputProvider>().AsSingle();
             Container.Bind<IGameFactory>().To<GameFactory>().AsSingle();
+            Container.Bind<IObjectPool>().To<ObjectPool>().AsSingle();
         }
 
         private void RegisterStaticData()

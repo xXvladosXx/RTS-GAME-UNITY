@@ -14,8 +14,8 @@ namespace Codebase.Runtime.Infrastructure.AssetService
         private readonly Dictionary<string, List<AsyncOperationHandle>> _handles = new Dictionary<string, List<AsyncOperationHandle>>();
 
         public void Initialize()
-        {
-//            Addressables.InitializeAsync();
+        { 
+            Addressables.InitializeAsync();
         }
         
         public T GetAsset<T>(string path) where T : Object

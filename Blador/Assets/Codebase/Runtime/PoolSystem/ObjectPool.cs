@@ -5,7 +5,7 @@ using Object = UnityEngine.Object;
 
 namespace Codebase.Runtime.PoolSystem
 {
-    class ObjectPool : MonoBehaviour, IObjectPool
+    class ObjectPool :  IObjectPool
     {
         private readonly Dictionary<int, Stack<Object>> _pool = new();
         
@@ -31,7 +31,7 @@ namespace Codebase.Runtime.PoolSystem
             }
             else
             {
-                var newObject = Instantiate(prefab, position, rotation, transform);
+                var newObject = Object.Instantiate(prefab, position, rotation);
                 instance = newObject.GetComponent<T>() ?? newObject.AddComponent<T>();
                 instance.OnDestroyAsPooledObject += OnDestroyHandler;
                 instance.PrefabInstanceID = id;
@@ -52,7 +52,6 @@ namespace Codebase.Runtime.PoolSystem
             var objects = GetObjects(id);
             objects.Push(returned);
             returned.gameObject.SetActive(false);
-            returned.transform.SetParent(transform);
         }
         
         private Stack<Object> GetObjects(int prefabInstanceID)

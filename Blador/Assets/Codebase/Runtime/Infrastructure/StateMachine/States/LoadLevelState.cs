@@ -33,7 +33,7 @@ namespace Codebase.Runtime.Infrastructure.StateMachine.States
 
         public async void Load(string save)
         {
-            _sceneName = "Gameplay";
+            _sceneName = "Main";
 
             await _sceneLoader.Load(_sceneName, OnLoaded);
         }
@@ -60,7 +60,7 @@ namespace Codebase.Runtime.Infrastructure.StateMachine.States
             {
                 await _gameFactory.CreateProductionSpawner(buildingSpawner.BuildingTypeID, buildingSpawner.Position);
             }*/
-            
+            _gameFactory.CreateUnitsCreator();
             Debug.Log("Loaded");
             _gameStateMachine.Enter<LoadProgressState, string>(_saveName);
         }
