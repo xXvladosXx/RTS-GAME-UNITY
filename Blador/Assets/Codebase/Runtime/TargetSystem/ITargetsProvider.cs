@@ -1,8 +1,12 @@
 ﻿
+using Codebase.Runtime.UnitSystem;
+
 namespace Codebase.Runtime.TargetSystem
 {
     public interface ITargetsProvider 
     {
-        ITarget GetUnitTargetFor(ITeamMember member);
+        UnitView GetUnitTargetFor(ITeamMember member);
+        void OnTargetCreated(ITargetAttackable unitView, Team team);
+        bool CheckIfCanBeAttacked(ITargetAttackable target, Team team);
     }
 }

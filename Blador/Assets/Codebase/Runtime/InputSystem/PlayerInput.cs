@@ -80,6 +80,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WheelClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""ed447cce-ba1b-48f6-9182-a1fb786fc29f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -192,6 +201,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""RightClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3fac8dc1-e1b0-45e2-903b-15be2367b278"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WheelClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -206,6 +226,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Player_LeftClick = m_Player.FindAction("LeftClick", throwIfNotFound: true);
         m_Player_MouseLook = m_Player.FindAction("MouseLook", throwIfNotFound: true);
         m_Player_RightClick = m_Player.FindAction("RightClick", throwIfNotFound: true);
+        m_Player_WheelClick = m_Player.FindAction("WheelClick", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -273,6 +294,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_LeftClick;
     private readonly InputAction m_Player_MouseLook;
     private readonly InputAction m_Player_RightClick;
+    private readonly InputAction m_Player_WheelClick;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -283,6 +305,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @LeftClick => m_Wrapper.m_Player_LeftClick;
         public InputAction @MouseLook => m_Wrapper.m_Player_MouseLook;
         public InputAction @RightClick => m_Wrapper.m_Player_RightClick;
+        public InputAction @WheelClick => m_Wrapper.m_Player_WheelClick;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -310,6 +333,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @RightClick.started += instance.OnRightClick;
             @RightClick.performed += instance.OnRightClick;
             @RightClick.canceled += instance.OnRightClick;
+            @WheelClick.started += instance.OnWheelClick;
+            @WheelClick.performed += instance.OnWheelClick;
+            @WheelClick.canceled += instance.OnWheelClick;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -332,6 +358,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @RightClick.started -= instance.OnRightClick;
             @RightClick.performed -= instance.OnRightClick;
             @RightClick.canceled -= instance.OnRightClick;
+            @WheelClick.started -= instance.OnWheelClick;
+            @WheelClick.performed -= instance.OnWheelClick;
+            @WheelClick.canceled -= instance.OnWheelClick;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -357,5 +386,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnLeftClick(InputAction.CallbackContext context);
         void OnMouseLook(InputAction.CallbackContext context);
         void OnRightClick(InputAction.CallbackContext context);
+        void OnWheelClick(InputAction.CallbackContext context);
     }
 }

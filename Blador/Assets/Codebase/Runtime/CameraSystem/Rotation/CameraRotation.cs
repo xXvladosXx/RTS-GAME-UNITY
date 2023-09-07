@@ -23,7 +23,7 @@ namespace Codebase.Runtime.CameraSystem.Rotation
         
         public void Rotate(Transform transform, float speed)
         {
-            if(!_inputProvider.IsRightButtonUp())
+            if(!_inputProvider.IsMouseWheelPressed())
                 return;
             
             _targetAngle += _inputProvider.MouseAxis * speed;

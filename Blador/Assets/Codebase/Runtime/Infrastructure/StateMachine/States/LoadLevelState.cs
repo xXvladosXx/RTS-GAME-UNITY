@@ -2,6 +2,7 @@
 using Codebase.Runtime.Infrastructure.SceneManagement;
 using Codebase.Runtime.Infrastructure.StateMachine.States.Core;
 using Codebase.Runtime.Infrastructure.StaticData;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -31,11 +32,11 @@ namespace Codebase.Runtime.Infrastructure.StateMachine.States
         }
 
 
-        public async void Load(string save)
+        public UniTask Load(string save)
         {
             _sceneName = "Main";
 
-            await _sceneLoader.Load(_sceneName, OnLoaded);
+            return _sceneLoader.Load(_sceneName, OnLoaded);
         }
 
         public void Exit()
@@ -61,6 +62,7 @@ namespace Codebase.Runtime.Infrastructure.StateMachine.States
                 await _gameFactory.CreateProductionSpawner(buildingSpawner.BuildingTypeID, buildingSpawner.Position);
             }*/
             _gameFactory.CreateUnitsCreator();
+            _gameFactory.CreateAllyUnitsCreator();
             Debug.Log("Loaded");
             _gameStateMachine.Enter<LoadProgressState, string>(_saveName);
         }

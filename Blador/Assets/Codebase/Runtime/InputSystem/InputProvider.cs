@@ -24,6 +24,9 @@ namespace Codebase.Runtime.InputSystem
 
         public bool IsRightButtonUp() => 
             PlayerActions.RightClick.IsPressed();
+        
+        public bool IsMouseWheelPressed() => 
+            PlayerActions.WheelClick.IsPressed();
 
         public InputProvider()
         {

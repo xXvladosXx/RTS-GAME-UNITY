@@ -13,7 +13,7 @@ namespace Codebase.Runtime.Infrastructure.StateMachine.States
             _gameStateMachine = gameStateMachine;
         }
 
-        public async void Load(string save)
+        public async UniTask Load(string save)
         {
             _gameStateMachine.Enter<GamePausedState>();
             await UniTask.Delay(400);

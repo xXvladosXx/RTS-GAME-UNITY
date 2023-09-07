@@ -12,14 +12,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 963a7dabca2a4b2cbb3e28066eeede3c, type: 3}
   m_Name: EnemyUnitData
   m_EditorClassIdentifier: 
-  UnitName: www
-  Prefab: {fileID: 4133905141168255657, guid: 0628739661c25f54e9e7035872436508, type: 3}
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: Actions
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[Codebase.Runtime.Selection.Actions.BaseAction,
+        Runtime]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|Codebase.Runtime.UI.Selection.SpawnableAction, Runtime
+    - Name: Data
+      Entry: 7
+      Data: 2|Codebase.Runtime.Selection.Actions.SpawnData, Runtime
+    - Name: SpawnedUnits
+      Entry: 7
+      Data: 3|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 1
+      Data: agg
+    - Name: 
+      Entry: 1
+      Data: fff
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Action
+      Entry: 3
+      Data: 1
+    - Name: Icon
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  Name: 
+  Icon: {fileID: 0}
   Stats:
-    Attack: 0
-    AttackSpeed: 0
-    AttackRange: 0
+    Attack: 11
+    AttackSpeed: 2
+    AttackRange: 2
     Health: 0
     Speed: 0
     Armor: 0
+  UnitName: www
+  Prefab: {fileID: 4133905141168255657, guid: 0628739661c25f54e9e7035872436508, type: 3}
+  AttackData:
+    m_AssetGUID: 837f880448c20184da8c1865e5448669
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   GoldReward: 0
   ExpReward: 0

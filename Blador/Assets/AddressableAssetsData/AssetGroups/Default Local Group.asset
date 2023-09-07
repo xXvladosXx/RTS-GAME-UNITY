@@ -25,6 +25,22 @@ MonoBehaviour:
     m_Address: EnemyCreator
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 7f521bc280eca49428e5b09c3ca28166
+    m_Address: AllyCreator
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 94d96c7c777c0eb438c8b11c7ed9d4b4
+    m_Address: AttackData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 837f880448c20184da8c1865e5448669
+    m_Address: RangeWeaponData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5971f4bdd0a559241adf44290b877ee5
+    m_Address: Assets/Resources_moved/AttackData/Bullet.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: c13b6e680ad3ed748b43b5ae4e2ea960, type: 2}
   m_SchemaSet:

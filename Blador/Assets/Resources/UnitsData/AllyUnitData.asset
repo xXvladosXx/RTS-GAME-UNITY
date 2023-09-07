@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a167c22656e40c18455fc571c37ed67, type: 3}
+  m_Name: AllyUnitData
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: Actions
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[Codebase.Runtime.Selection.Actions.BaseAction,
+        Runtime]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|Codebase.Runtime.UI.Selection.SpawnableAction, Runtime
+    - Name: Data
+      Entry: 7
+      Data: 2|Codebase.Runtime.Selection.Actions.SpawnData, Runtime
+    - Name: SpawnedUnits
+      Entry: 7
+      Data: 3|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 1
+      Data: agg
+    - Name: 
+      Entry: 1
+      Data: fff
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Action
+      Entry: 3
+      Data: 1
+    - Name: Icon
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  Name: 
+  Icon: {fileID: 0}
+  Stats:
+    Attack: 0
+    AttackSpeed: 2
+    AttackRange: 2
+    Health: 0
+    Speed: 5
+    Armor: 0
+  UnitName: dd
+  Prefab: {fileID: 7875420399232884178, guid: 89fa26b348bea164e8ae04c4a6e633fc, type: 3}
+  AttackData:
+    m_AssetGUID: 94d96c7c777c0eb438c8b11c7ed9d4b4
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

@@ -8,5 +8,6 @@ namespace Codebase.Runtime.Infrastructure.Factory
     public interface IGameFactory
     {
         UniTask<IUnitsCreator> CreateUnitsCreator();
+        UniTask<IUnitsCreator> CreateAllyUnitsCreator();
     }
 }

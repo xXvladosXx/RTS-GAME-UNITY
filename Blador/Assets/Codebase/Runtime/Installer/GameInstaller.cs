@@ -1,4 +1,5 @@
-﻿using Codebase.Runtime.Infrastructure;
+﻿using Codebase.Runtime.GameplayCore;
+using Codebase.Runtime.Infrastructure;
 using Codebase.Runtime.Infrastructure.AssetService;
 using Codebase.Runtime.Infrastructure.Factory;
 using Codebase.Runtime.Infrastructure.SceneManagement;
@@ -6,6 +7,10 @@ using Codebase.Runtime.Infrastructure.StateMachine;
 using Codebase.Runtime.Infrastructure.StaticData;
 using Codebase.Runtime.InputSystem;
 using Codebase.Runtime.PoolSystem;
+using Codebase.Runtime.TargetSystem;
+using Codebase.Runtime.UnitSystem;
+using Codebase.Runtime.UnitSystem.Factory;
+using Codebase.Runtime.UnitSystem.Spawn;
 using UnityEngine;
 using Zenject;
 
@@ -42,6 +47,13 @@ namespace Codebase.Runtime.Installer
             Container.Bind<IInputProvider>().To<InputProvider>().AsSingle();
             Container.Bind<IGameFactory>().To<GameFactory>().AsSingle();
             Container.Bind<IObjectPool>().To<ObjectPool>().AsSingle();
+
+            Container.BindInterfacesAndSelfTo<GameLoopHandler>().AsSingle();
+
+            Container.Bind<IUnitsCreator>().To<EnemyFactory>().AsTransient();
+            Container.Bind<IUnitsCreator>().To<AllyFactory>().AsTransient();
+
+            Container.Bind<ILevelBinder>().To<LevelBinder>().AsSingle();
         }
 
         private void RegisterStaticData()

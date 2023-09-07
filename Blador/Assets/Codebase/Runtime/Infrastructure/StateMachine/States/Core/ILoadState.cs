@@ -1,7 +1,9 @@
-﻿namespace Codebase.Runtime.Infrastructure.StateMachine.States.Core
+﻿using Cysharp.Threading.Tasks;
+
+namespace Codebase.Runtime.Infrastructure.StateMachine.States.Core
 {
     public interface ILoadState<in TLoad> : IExitableState
     {
-        void Load(TLoad save);
+        UniTask Load(TLoad save);
     }
 }

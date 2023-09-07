@@ -16,9 +16,13 @@ namespace Codebase.Runtime.Infrastructure.SceneManagement
                 await Addressables.LoadSceneAsync("Main");
             }   
             
-            await UniTask.Delay(3000);
+            await UniTask.Delay(30);
             
-            await Addressables.LoadSceneAsync(name);
+            var waitNextScene = Addressables.LoadSceneAsync(name);
+            while (!waitNextScene.IsDone)
+            {
+                await UniTask.Yield();
+            }
             
             onLoaded?.Invoke();
         }

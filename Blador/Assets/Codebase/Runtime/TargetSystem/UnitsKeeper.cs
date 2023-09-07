@@ -1,28 +1,34 @@
 using System;
 using System.Collections.Generic;
+using Codebase.Runtime.GameplayCore;
 using Codebase.Runtime.KDTree;
 using Codebase.Runtime.UnitSystem;
 using Codebase.Runtime.UnitSystem.Spawn;
 using UnityEngine;
+using Zenject;
 
 namespace Codebase.Runtime.TargetSystem
 {
     public class UnitsKeeper : IUnitsKeeper
     {
         private readonly IUnitsCreatorKeeper _unitsCreatorKeeper;
-        private readonly Dictionary<Team, KdTree<UnitView>> _units = new();
+        private readonly GameLoopHandler _gameLoopHandler;
+
+        private readonly Dictionary<UnitView, Unit> _unitsViews = new();
+
+        private readonly Dictionary<Team, KdTree<UnitView>> _units = new()
+        {
+            {Team.Allies, new KdTree<UnitView>()},
+            {Team.Enemies, new KdTree<UnitView>()}
+        };
         
-        public UnitsKeeper(IUnitsCreatorKeeper unitsCreatorKeeper)
+        public UnitsKeeper(IUnitsCreatorKeeper unitsCreatorKeeper,
+            ILevelBinder levelBinder,
+            GameLoopHandler gameLoopHandler)
         {
             _unitsCreatorKeeper = unitsCreatorKeeper;
-        }
-
-        public void Initialize()
-        {
-            foreach (var unitsCreator in _unitsCreatorKeeper.GetAll<IUnitsCreator>())
-            {
-                unitsCreator.OnUnitCreated += OnUnitCreated;
-            }
+            levelBinder.UnitsKeeper = this;
+            gameLoopHandler.Add(this);
         }
 
         public bool GameUpdate()
@@ -36,32 +42,40 @@ namespace Codebase.Runtime.TargetSystem
 
         public void Recycle()
         {
-            foreach (var unitsCreator in _unitsCreatorKeeper.GetAll<IUnitsCreator>())
-            {
-                unitsCreator.OnUnitCreated -= OnUnitCreated;
-            }
-            
             _units.Clear();
         }
 
-        private void OnUnitCreated(Unit<UnitView> unit)
+        public void OnUnitCreated(UnitView unitView, Unit unit)
         {
             if (unit == null)
                 throw new ArgumentNullException(nameof(unit));
             
-            _units[unit.Team].Add(unit.UnitView);
+            _unitsViews.Add(unitView, unit);
+            _units[unitView.Team].Add(unit.UnitView);
+        }
+
+        public Unit FindUnitByView(UnitView unitView)
+        {
+            _unitsViews.TryGetValue(unitView, out var unit);
+            return unit;
         }
 
         public UnitView FindClosestUnit(Team team, Vector3 position)
         {
-            var properTeam = FindProperTeam(team);
+            var teamOpponents = GetOpponentsTeam(team);
+            var properTeam = FindProperTeam(teamOpponents);
             return properTeam?.FindClosest(position);
         }
 
-        private KdTree<UnitView> FindProperTeam(Team team)
+        public KdTree<UnitView> FindProperTeam(Team team)
         {
             _units.TryGetValue(team, out var possibleUnits);
             return possibleUnits;
+        }
+
+        public Team GetOpponentsTeam(Team team)
+        {
+            return team == Team.Enemies ? Team.Allies : Team.Enemies;
         }
     }
 }
